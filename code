@@ -1,0 +1,41 @@
+#This program is to search an application in program files and open the executable or other files.
+
+import os
+
+def list_dir(path):
+    arr = os.listdir(path)  # print(arr)
+    return arr
+
+
+appname = input("Enter the app name:")
+print(appname)
+
+folder_Path = "C:\Program Files\\" + appname
+print(folder_Path)
+
+nt = list_dir(folder_Path)
+
+i=0
+folder = []
+file = []
+for line in nt:
+    dot_operator = line.find(".")
+
+    if dot_operator == -1:
+        print("{}: {}".format('Folder',line))
+        folder.append(line)
+    else:
+        print("{}: {}".format('File',line))
+        file.append(line)
+
+print("Number of sub-folders in ", folder_Path,':', len(folder))
+print("Number of files in ", folder_Path,':',len(file))
+
+extension = input('Please enter the extension of file type you want to see: ')
+
+matches = [el for el in file if extension in el]
+print('The files in ',folder_Path,'with extension type',extension,'are:')
+print(*matches,sep='\n')
+
+file_Selection = input('Enter the name from above list you want to open: ')
+os.startfile(folder_Path+'\\'+ file_Selection)    #print(file_Selection)
