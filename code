@@ -37,5 +37,19 @@ matches = [el for el in file if extension in el]
 print('The files in ',folder_Path,'with extension type',extension,'are:')
 print(*matches,sep='\n')
 
-file_Selection = input('Enter the name from above list you want to open: ')
-os.startfile(folder_Path+'\\'+ file_Selection)    #print(file_Selection)
+option_Selection = input('Do you want to open a file in this folder: (y/n)')
+if option_Selection == 'y'or option_Selection.lower() == 'yes':
+    file_Selection = input('Enter the name from above list you want to open: ')
+    os.startfile(folder_Path+'\\'+ file_Selection)    #print(file_Selection)
+elif option_Selection == 'n' or option_Selection.lower() == 'no':
+    dir_select = input('Do you want to open a folder in same directory: (y/n)')
+    if dir_select == 'y'or dir_select.lower() == 'yes':
+        dir_select2 = input('Enter the name of folder you want to open: ')
+    elif option_Selection == 'n' or option_Selection.lower() == 'no':
+        dir_select3 = input('Enter the path of the folder you want to open: ')
+        print(dir_select3)
+    else:
+        print('Error. Wrong selection.')
+else:
+    print('Error. Wrong selection.')
+
