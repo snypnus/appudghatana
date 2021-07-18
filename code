@@ -1,6 +1,7 @@
 #This program is to search an application in program files and open the executable or other files.
 
 import os
+import time
 
 def list_dir(path):
     arr = os.listdir(path)  # print(arr)
@@ -45,11 +46,14 @@ elif option_Selection == 'n' or option_Selection.lower() == 'no':
     dir_select = input('Do you want to open a folder in same directory: (y/n)')
     if dir_select == 'y'or dir_select.lower() == 'yes':
         dir_select2 = input('Enter the name of folder you want to open: ')
+        os.startfile(folder_Path+'\\'+ dir_select2)
     elif option_Selection == 'n' or option_Selection.lower() == 'no':
         dir_select3 = input('Enter the path of the folder you want to open: ')
-        print(dir_select3)
+        print('Opening the path you gave in few seconds. If you want to use the python program again.\n'
+              'Execute code with the new path')
+        time.sleep(10)
+        os.startfile(dir_select3)
     else:
         print('Error. Wrong selection.')
 else:
     print('Error. Wrong selection.')
-
